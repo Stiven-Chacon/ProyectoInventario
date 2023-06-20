@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block nav %}
+    {% include "administrador/menu.html" %}
+{% endblock %}
+
+{% block section %}
+    <br>
+    <h3 class="text-center fw-bolds text-center">Bienvenidos Módulo Administrador</h3>
+    <p>Las tareas que puede realizar el usuario con rol administrador es la siguiente: </p>
+    <ul>
+        <li>Gestionar Servicios</li>
+        <li>Gestionar Reportes</li>
+    </ul>
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}

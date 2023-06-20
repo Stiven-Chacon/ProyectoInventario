@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Registrar Elementos Devolutivos</title>
+            <!-- Bootstrap CSS -->
+        {% load static %}
+        <link rel="stylesheet" href="{%static '../static/css/RegistrarElementoDevolutivo.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        </head>
+    <body>            
+        <div id="login">
+            <form action="/registrarDevolutivo/" method="post" enctype="multipart/form-data" class="was-validated">
+            {% csrf_token %}
+            <center> <h1>Registrar Elementos Devolutivos</h1> </center>
+            
+            <!-- Bloque De Codigo De Para Selecionar El Tipo De Elemento  -->
+            <label for="cbTipoElemento">Tipo de Elemento:</label>
+                <select name="cbTipoElemento" id="cbTipoElemento" class="form-select" required> 
+                        <option>Seleccione Tipo De Elemento..</option>
+                        {% for tipoElement in tipoElementos %}
+                            <option value="{{tipoElement.0}}">{{tipoElement.1}}</option>
+                        {% endfor %}
+                </select>
+
+            <!-- Bloque De Codigo De Para Selecionar La Fecha De que Se Registra el inventario  -->
+            <label for="txtFechaSena">Fecha Inventario SENA:</label>
+            <input type="date" placeholder="Fecha" name="txtFechaSena" id="txtFechaSena" class="form-control">
+            
+            <!-- Bloque De Codigo De Para La Placa SENA del Elemento  -->
+            <label for="txtPlacaSena">Placa SENA:</label>
+            <input type="text" placeholder="Ingresa Placa SENA" name="txtPlacaSena" id="txtPlacaSena" class="form-control" required>
+            
+            <!-- Bloque De Codigo De Para el Serial del Elemento  -->
+            <label for="txtSerial">Serial:</label>
+            <input type="text" placeholder="Ingrese El Serial" name="txtSerial" id="txtSerial" class="form-control">
+            
+            <!-- Bloque De Codigo De Para La Marca del Elemento  -->
+            <label for="txtMarca">Marca:</label>
+            <input type="text" placeholder="Ingrese La Marca" name="txtMarca" id="txtMarca" class="form-control">
+            
+            <!-- Bloque De Codigo De Para el Valor Unitario del Elemento  -->
+            <label for="txtValorUnitario">Valor Unitario:</label>
+            <input type="number" placeholder="Ingrese La Marca" name="txtValorUnitario" id="txtValorUnitario" class="form-control" required>
+            
+            <!-- Bloque De Codigo De Para el estado del Elemento  -->
+            <label for="cbEstado">Estado:</label>
+            <select name="cbEstado" id="cbEstado" class="form-select">
+                <option>Seleccione Estado..</option>
+                {% for estado in estados %} 
+                    <option value="{{estado.0}}">{{estado.1}}</option>
+                {% endfor %}
+            </select>
+
+            <!-- Bloque De Codigo De Para el Nombre del Elemento  -->
+            <label for="txtNombre">Nombre:</label>
+            <input type="text" placeholder="Ingrese La Marca" name="txtNombre" id="txtNombre" class="form-control" required>
+            
+            <!-- Bloque De Codigo De Para La Descripcion y/o Caracteristicas del Elemento  -->
+            <label for="txtDescripcion">Descripcion y/o Caracteristicas:</label>
+            <input type="text" placeholder="Ingrese La Descripcion y/o Caracteristicas" name="txtDescripcion" id="txtDescripcion"  class="form-control">
+            <br><br>
+
+            <!-- Formulario De La Ubicacion Del Elemento Devolutivo  -->
+            <center> <h2>Ubicación</h2> </center>
+            
+            <!-- Bloque De Codigo De Para Selecionar el Deposito para guardar el Elemento  -->
+            <label for="cbDeposito">Deposito:</label>
+            <select name="cbDeposito" id="cbDeposito" class="form-select">
+                <option value="1">Deposito 1</option>
+                <option value="2">Deposito 2</option>
+                <option value="3">Deposito 3</option>
+                <option value="4">Deposito 4</option>
+            </select>
+
+            <!-- Bloque De Codigo De Para Selecionar el Estante para guardar el Elemento  -->
+                <label for="txtEstante" class="fw-bold">Estante:</label>
+                <input type="number" name="txtEstante" id="txtEstante" value="0" class="form-control"> 
+
+            <!-- Bloque De Codigo De Para Selecionar el Entrepaño para guardar el Elemento  -->
+                <label for="txtEntrePano" class="fw-bold">Entrepaño:</label>
+                <input type="number" name="txtEntrePano" id="txtEntrePano" value="0" class="form-control">                   
+
+            <!-- Bloque De Codigo De Para Selecionar el Locker para guardar el Elemento  -->
+                <label for="txtLocker" class="fw-bold">Locker:</label>
+                <input type="number" name="txtLocker" id="txtLocker" value="0" class="form-control">                   
+
+                <!-- Bloque De Codigo De La Foto Del Elemento  -->
+            <label>Foto:</label>
+
+            <div class="form-floating mb-4">
+                <input type="file" name="fileFoto" id="fileFoto" class="form-control" required accept=".jpg" accept=".jpg" placeholder="Cargar foto">
+                <label for="fileFoto">Cargar foto</label>
+            </div>
+
+            <!-- Bloque De Codigo De Para Visualizar La Imagen -->
+            <div class="text-center">
+                <img id="imagenProducto" src="" alt="" width="100" height="100">
+            </div>
+
+            <br>
+            <center><button>Registrar</button> </center>
+        </form>
+    <script src="{%static '../static/js/app.js'%}"></script>
+    </body>
+</html>

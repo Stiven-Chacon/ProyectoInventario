@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block nav %}
+    {% include "asistente/menu.html" %}
+{% endblock %}
+
+{% block section %}
+    <br>
+    <h3 class="text-center fw-bolds text-center">Bienvenidos Módulo Asistente</h3>
+    <p>Las tareas que puede realizar el usuario con rol Asistente son las siguientes: </p>
+    <ul>
+        <li>Registrar Ventas del dia</li>
+        <li>Registrar Total Recaudado</li>
+        <li>Registrar Vehiculos ingresados</li>
+        <li>Registrar Quejas y Reclamos</li>
+        <li>Agregar nuevo cliente</li>
+    </ul>
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Usuario</title>
+   <!-- Bootstrap CSS -->
+   {% load static %}
+   <link rel="stylesheet" href="{%static '../static/css/RegistrarUsuario.css' %}" importance>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div id="login">
+      <form action="/registrarUsuario/" method="post" enctype="multipart/form-data" class="was-validated">
+          {% csrf_token %}
+      <center> <h1>Registrar Usuario</h1> </center>
+        <label for="txtNombres">Nombre:</label>
+        <input type="text" placeholder="Nombres" name="txtNombres" id="txtNombres" class="form-control" required>
+
+        <label for="txtApellidos">Apellidos:</label>
+        <input type="text" placeholder="Apellidos" name="txtApellidos" id="txtApellidos" class="form-control" required>
+
+        <label for="txtCorreo">Correo Electronico:</label>
+        <input type="email" placeholder="Apellidos" name="txtCorreo" id="txtCorreo" class="form-control" required>
+
+        <label for="cbTipo">Tipo: </label><br>
+            <select name="cbTipo" id="cbTipo" class="form-select" required>
+                  <option value="" placeholder="Seleccione El Tipo"></option>
+                  <option value="Instructor">Instructor</option>
+                  <option value="Aprendiz">Aprendiz</option>
+                  <option value="Administrativo">Administrativo</option>
+            </select>
+        <br>
+
+        <label for="cbRol">Rol En El Sistema: </label><br>
+            <select name="cbRol" id="cbRol" class="form-select" required> 
+              <option value="" placeholder="Seleccione El Rol"></option>
+              <option value="2" name="Administrador">Administrador</option>
+              <option value="3" name="Asistente">Asistente</option>
+              <option value="4" name="Instructor">Instructor</option>
+          </select>
+        </select>
+        <br>
+
+        <label>Foto:</label>
+        <div class="form-floating mb-4">
+            <input type="file" name="fileFoto" id="fileFoto" class="form-control" required accept=".jpg" accept=".jpg" placeholder="Cargar foto">
+            <label for="fileFoto">Cargar foto</label>
+      </div>
+
+        <div class="text-center">
+            <img id="imagenProducto" src="" alt="" width="100" height="100">
+        </div>
+
+        <br>
+        <center><button>Registrar</button> </center>
+      </form>
+    </div>
+<script src="{%static '../static/js/app.js'%}"></script>
+</body>
+</html>
